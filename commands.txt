@@ -1,5 +1,6 @@
 // color list
 top action bar = #222222
+login background = #303030
 
 
 // to start the app on git bash

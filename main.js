@@ -7,11 +7,13 @@ const globalShortcut = electron.globalShortcut; // for shortcuts and dev
 const {app, BrowserWindow, Menu, ipcMain} = electron;
 // production settings
 // process.env.NODE_ENV = 'production';
-process.env.NODE_ENV = 'test';
+let DEBUG = process.env.DEBUG
+// process.env.NODE_ENV = 'test';
 
 let mainWindow = null;
-var TEMPLATE_DIR = './template';
-var ICON_DIR = './assets/res/icon';
+var TEMPLATE_DIR = './view_electron/template';
+var ICON_DIR = './view_electron/assets/res/icon';
+var TEMP = "./test"
 
 // Main window creation method
 function createWindow(){
@@ -28,9 +30,11 @@ function createWindow(){
         show: false,
     });
 
+    // start flask and 
+
     // Load html into window
     mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, TEMPLATE_DIR, 'mainwindow.html'),
+        pathname: path.join(__dirname, TEMP, 'test.html'),
         protocol: 'file',
         slashes: true,
     }));
@@ -63,7 +67,7 @@ function createWindow(){
     });
 
     // for dev only
-    if(process.env.NODE_ENV === "test"){
+    if(DEBUG){
         globalShortcut.register('CommandOrControl+I', () => {
             mainWindow.openDevTools({
                 detach: true

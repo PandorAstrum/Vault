@@ -3,6 +3,10 @@ bower_components
 node_modules
 dist
 release-builds
+pyflask
+untitled
+test
+
 
 #files
 *.tgz
