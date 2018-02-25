@@ -1,13 +1,13 @@
 #directories
 bower_components
 node_modules
-dist
 release-builds
-pyflask
-untitled
+vnv
 test
-
+__pycache__
+.idea
 
 #files
 *.tgz
 *.log
+*.pyc

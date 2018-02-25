@@ -6,8 +6,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "package-win32": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=view_electron/assets/res/icon/icon.ico --prune=true --out=release-builds --version-string.CompanyName=PandorAstrum --version-string.FileDescription=CE --version-string.ProductName=\"Vault\"",
-    "package-win64": "electron-packager . --overwrite --asar=true --platform=win32 --icon=view_electron/assets/res/icon/icon.ico --prune=true --out=release-builds --version-string.CompanyName=PandorAstrum --version-string.FileDescription=CE --version-string.ProductName=\"Vault\""
+    "package-win32": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=view_electron/assets/res/icon/icon.ico --prune=true --out=release-builds --win32metadata.CompanyName=\"PandorAstrum\" --version-string.FileDescription=CE --appCopyright=\"Copyright (C) 2018 PandorAstrum Studio. All rights reserved.\" --version-string.ProductName=\"Vault\"",
+    "package-win64": "electron-packager . --overwrite --asar=true --platform=win32 --icon=view_electron/assets/res/icon/icon.ico --prune=true --out=release-builds --win32metadata.CompanyName=\"PandorAstrum\" --version-string.FileDescription=CE --appCopyright=\"Copyright (C) 2018 PandorAstrum Studio. All rights reserved.\" --version-string.ProductName=\"Vault\""
   },
   "author": "Ashiquzzaman Khan",
   "license": "GPL-3.0",

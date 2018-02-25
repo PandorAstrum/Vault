@@ -1,22 +1,39 @@
 // All required module
+'use strict';
+
 const electron = require('electron');
-const url = require('url');
-const path = require('path');
-// const storage = require('storage');
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
 const globalShortcut = electron.globalShortcut; // for shortcuts and dev
-const {app, BrowserWindow, Menu, ipcMain} = electron;
+const path = require('path');
+
 // production settings
 // process.env.NODE_ENV = 'production';
-let DEBUG = process.env.DEBUG
-// process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = 'debug';
 
-let mainWindow = null;
-var TEMPLATE_DIR = './view_electron/template';
+// Keep a global reference of the mainWindowdow object, if you don't, the mainWindowdow will
+// be closed automatically when the JavaScript object is garbage collected.
+var mainWindow = null;
+var subpy = null;
+
+// dirs
 var ICON_DIR = './view_electron/assets/res/icon';
-var TEMP = "./test"
 
-// Main window creation method
+// This method will be called when Electron has finished
+// initialization and is ready to create browser mainWindow.
+// Some APIs can only be used after this event occurs.
+
+
+    // On resize write to JSON
+    // mainWindow.on('resize', () => {
+    //     let { width, height } = mainWindow.getBounds();
+    //     store.set('settings.windowBounds', { width, height });
+    // });
 function createWindow(){
+	// spawn server
+	subpy = require('child_process').spawn('python', [__dirname + './bin/base_app/run_app.py']); // has to be changed to compiled exe later with pyinstaller
+
+    // Create the browser mainWindow
     // get window data from settings 
     // let { width, height } = store.get("settings")["windowBounds"];
     // Create new window
@@ -30,31 +47,15 @@ function createWindow(){
         show: false,
     });
 
-    // start flask and 
-
-    // Load html into window
-    mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, TEMP, 'test.html'),
-        protocol: 'file',
-        slashes: true,
-    }));
+    // Load the index page
+    mainWindow.loadURL('http://localhost:4040/');
     
-        // ready the window with load url and show
-        mainWindow.once('ready-to-show', () => {
-            mainWindow.show()
-        })
+    // ready the window with load url and show
+    mainWindow.once('ready-to-show', () => {
+        mainWindow.show()
+    })
 
-    // On resize write to JSON
-    // mainWindow.on('resize', () => {
-    //     let { width, height } = mainWindow.getBounds();
-    //     store.set('settings.windowBounds', { width, height });
-    // });
-
-    // Quit app when close
-    mainWindow.on('closed', function(){
-        mainWindow = null;
-    });
-
+    // PRevent right clicking
     mainWindow.webContents.on('dom-ready', function(e){
         e.preventDefault();
         // send info;
@@ -66,8 +67,8 @@ function createWindow(){
         // mainWindow.webContents.send("channel_tab_section_status", tab_status);
     });
 
-    // for dev only
-    if(DEBUG){
+    // Open the DevTools.
+    if(process.env.NODE_ENV === "debug"){
         globalShortcut.register('CommandOrControl+I', () => {
             mainWindow.openDevTools({
                 detach: true
@@ -77,30 +78,50 @@ function createWindow(){
             mainWindow.reload();
         });
     } else {
-        // return false;
+    // return false;
         mainWindow.onbeforeunload = (e) => {
-            // Prevent Command-R from unloading the window contents.
+        // Prevent Command-R from unloading the window contents.
             e.returnValue = false
-          }
+        }
     }
+
+    // Quit app when close
+    mainWindow.on('closed', function(){
+        mainWindow = null;
+    });
 }
 
+app.on('ready', createWindow)
 
-// listen for the app to be ready
-app.on('ready', createWindow);
 
-// listen for app to close
+// app.on('activate', () => {
+//     if (mainWindow === null) {
+//       createWindow()
+//     }
+// })
+
+// disable menu
+electron.app.on('browser-window-created',function(e,window) {
+    window.setMenu(null);
+});
+
+// ------- app terminated
+
+app.on('window-all-closed', function() {
+	// quit app if windows are closed
+  app.quit();
+});
+
+app.on('quit', function() {
+	// kill the python server on exit
+  subpy.kill('SIGINT');
+});
+
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin'){
         app.quit();
     }
 });
-app.on('activate', () => {
-    if (mainWindow === null) {
-      createWindow()
-    }
-})
-
 
 
 // Shortcuts unregistering on quit
@@ -118,3 +139,29 @@ app.on('will-quit', () => {
     }
     
 })
+
+
+
+
+// const url = require('url');
+
+// const storage = require('storage');
+
+// const {app, BrowserWindow, Menu, ipcMain} = electron;
+
+
+
+// var TEMPLATE_DIR = './view_electron/template';
+
+// var TEMP = "./test"
+
+
+
+
+
+
+// listen for app to close
+
+
+
+
