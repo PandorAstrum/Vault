@@ -17,4 +17,5 @@ if __name__ == '__main__':
     import base_app
     
     app = base_app.setup_app()
-    app.run(host='0.0.0.0', port=4040)
+    # app.run(host='0.0.0.0', port=4040)
+    app.run()
