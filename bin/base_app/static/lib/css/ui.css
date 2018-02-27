@@ -7,6 +7,12 @@ body {
     margin: 0;
     overflow: hidden;
 }
+.pull-left {
+    float: left!important;
+}
+.pull-right {
+    float: right!important;
+}
 
 /* controls --------------------------------------------------------------------------------------------*/
 #minimize {
@@ -39,6 +45,39 @@ body {
 	display: block;
 	cursor: pointer;
 }
+
+
+/* controls --------------------------------------------------------------------------------------------*/
+/* #minimize {
+    color: #fabd2f;
+}
+#maximize {
+    color: #b8bb26;
+}
+#close {
+    color: #fb4934;
+}
+#minimize,
+#maximize,
+#close {
+    transition: all 9s;
+}
+#minimize i:nth-child(2),
+#maximize i:nth-child(2),
+#close i:nth-child(2) {
+	display: none;
+}
+#minimize:hover i:nth-child(1),
+#maximize:hover i:nth-child(1),
+#close:hover i:nth-child(1) {
+    display: none;
+}
+#minimize:hover i:nth-child(2),
+#maximize:hover i:nth-child(2),
+#close:hover i:nth-child(2) {
+	display: block;
+	cursor: pointer;
+} */
 
 
 

@@ -8,7 +8,7 @@ def homepage():
     """
     Render the homepage template on the / route
     """
-    return render_template('test_template.html', title="Welcome")
+    return render_template('blockly.html', title="Welcome")
 
 
 @home.route('/dashboard')

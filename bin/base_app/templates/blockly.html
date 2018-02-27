@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block body %}
+<div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+
+{% endblock %}
+
+{% block js %}
+    <xml id="toolbox">
+  <block type="controls_if"></block>
+  <block type="controls_repeat_ext"></block>
+  <block type="logic_compare"></block>
+  <block type="math_number"></block>
+  <block type="math_arithmetic"></block>
+  <block type="text"></block>
+  <block type="text_print"></block>
+</xml>
+<script>
+  var workspacePlayground = Blockly.inject('blocklyDiv',
+      {toolbox: document.getElementById('toolbox')});
+</script>
+{% endblock %}

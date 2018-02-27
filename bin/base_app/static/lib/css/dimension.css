@@ -1,0 +1,35 @@
+body {
+  box-sizing: 0;
+  margin: 0;
+  background: #aaa;
+  overflow: hidden;
+  width: 100%;
+}
+.content {
+    height: 100vh;
+    max-height: 100vh;
+    display: grid;
+    grid-template-columns: 3fr 13fr;
+    grid-template-rows: 18px 50px auto 1fr 20px;
+    overflow: hidden;
+}
+/* top title bar -----------------------------------------------------------------------------------------*/
+.content section.titlebar {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 1;
+  background: #222;
+  -webkit-app-region: drag;
+}
+.content section.titlebar .controls {
+  -webkit-app-region: no-drag;
+  float: right;
+
+}
+.content section.titlebar .controls .wrapper {
+	display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  min-width: 50px;
+  height: 100%;
+}

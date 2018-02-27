@@ -1,30 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="AngularApp">
-<head>
-    <title>{{ title }} | Electron App</title>
-    <!-- Modules-->
-    <link href="{{ url_for('static', filename='css/font-awesome.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/simple-line-icons.css') }}" rel="stylesheet">
-    <!-- App style -->
-    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
-    <script src="{{ url_for('static', filename='lib/angular/angular.js') }}"></script>
-	<script src="{{ url_for('static', filename='lib/angular/angular-resource.js') }}"></script>
-</head>
+<html lang="en">
+    <head>
+        <title>Base Vault</title>
+        <!--Import Google Icon Font-->
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='lib/css/materialiconfonts.css') }}" />
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='lib/css/materialize.min.css') }}" />
+        <!--Import Bootsrap-->
+{#        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='lib/css/bootstrap.min.css') }}" />#}
+        <!-- Import Fontawesome -->
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='lib/css/font-awesome.min.css') }}">
+        <!--Import custom ui rules -->
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='lib/css/ui.css') }}" />
+        <!--Import dimension rules-->
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='lib/css/dimension.css') }}" />
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
 
-<body>
+        <div class="content">
+            <!-- title bar -->
+            {% include '_includes/titlebar.html' %}
+            {% block body %} {% endblock %}
+        </div>
 
-      {% block body %}
-      {% endblock %}
+        <!-- plugins -->
+        <!-- import jquery -->
+        <script src="{{ url_for('static', filename='lib/js/jquery-3.3.1.min.js') }}"></script>
+        <!-- import materialize -->
+        <script src="{{ url_for('static', filename='lib/js/materialize.min.js') }}"></script>
+        <!-- import bootstrap -->
+        <script src="{{ url_for('static', filename='lib/js/bootstrap.min.js') }}"></script>
+        <!-- import blockly -->
+        <script src="{{ url_for('static', filename='lib/js/blockly_compressed.js')}}"></script>
+        <script src="{{ url_for('static', filename='lib/js/blocks_compressed.js') }}"></script>
+        <script src="{{ url_for('static', filename='lib/js/en.js') }}"></script>
+        <!-- import titlebar behaviour -->
+        <script src="{{ url_for('static', filename='browserjs/titlebar.js')}}"></script>
 
-    <!-- plugins -->
-	<script src="{{ url_for('static', filename='lib/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='lib/popper.js/dist/umd/popper.js') }}"></script>
-    <script src="{{ url_for('static', filename='lib/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+        {% block js %} {% endblock %}
 
-    <!-- angular js and app -->
-    <script src="{{ url_for('static', filename='js/ui.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/angular_app.js') }}"></script>
-
-
-</body>
+    </body>
 </html>

@@ -6,6 +6,7 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const globalShortcut = electron.globalShortcut; // for shortcuts and dev
 const path = require('path');
+const url = require('url');
 
 // production settings
 // process.env.NODE_ENV = 'production';
@@ -40,16 +41,21 @@ function createWindow(){
     mainWindow = new BrowserWindow({
         // width, 
         // height,
-        minWidth: 720,
+        minWidth: 600,
         minHeight: 550,
         icon: path.join(__dirname, ICON_DIR, 'icon.ico'),
         frame: false,
         show: false,
     });
 
+    // try to load a base html which will hold another browser to handle the server
     // Load the index page
     mainWindow.loadURL('http://localhost:4040/');
-    
+    // mainWindow.loadURL(url.format({
+    //     pathname: 'bin/base_app/templates/test_template.html',
+    //     protocol: 'file:',
+    //     slashes: true
+    //   }));   
     // ready the window with load url and show
     mainWindow.once('ready-to-show', () => {
         mainWindow.show()
@@ -143,7 +149,7 @@ app.on('will-quit', () => {
 
 
 
-// const url = require('url');
+
 
 // const storage = require('storage');
 
