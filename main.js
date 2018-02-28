@@ -32,8 +32,8 @@ var ICON_DIR = './view_electron/assets/res/icon';
     // });
 function createWindow(){
 	// spawn server
-	subpy = require('child_process').spawn('python', [__dirname + './bin/base_app/run_app.py']); // has to be changed to compiled exe later with pyinstaller
-
+	// subpy = require('child_process').spawn('python', [__dirname + './bin/base_app/run_app.py']);
+    subpy = require('child_process').spawn('./bin/py_dist/dist/py_app/py_app.exe')
     // Create the browser mainWindow
     // get window data from settings 
     // let { width, height } = store.get("settings")["windowBounds"];
@@ -48,6 +48,8 @@ function createWindow(){
         show: false,
     });
 
+    mainWindow.webContents.session.clearCache(function() {
+    });
     // try to load a base html which will hold another browser to handle the server
     // Load the index page
     mainWindow.loadURL('http://localhost:4040/');

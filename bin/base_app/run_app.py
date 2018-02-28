@@ -16,7 +16,7 @@ if not found_parent_dir:
 if __name__ == '__main__':
     import base_app
     
-    app, con = base_app.setup_app()
+    app, db = base_app.setup_app()
     # app.run(host='0.0.0.0', port=4040)
     app.run(
         host=app.config.get("HOST", "localhost"),

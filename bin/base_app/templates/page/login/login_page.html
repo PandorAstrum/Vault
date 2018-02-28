@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <form action="" method="post">
+        <div class="card grey darken-3 center-align white-text" style="width: 400px;">
+                    <div class="card-content" style="padding-bottom: 0;">
+                        <img src="../static/lib/img/lock.png" width="80px" />
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <div class="input-field col s12 col-lg-12" style="height: 40px;">
+                                    <input id="username" type="text" class="validate" style="height: 40px;">
+                                    <label for="username" style="height: 40px;">Username</label>
+                                </div>
+                                <div class="input-field col s12 col-lg-12" style="height: 40px;">
+                                    <input id="password" type="password" class="validate" style="height: 40px;">
+                                    <label for="password" style="height: 40px;">Password</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s6 m6 l6 right-align">
+                                <p> <input type="checkbox" id="remember" /> <label for="remember">Remember Me</label> </p>
+                            </div>
+                            <div class="col s6 m6 l6 left-align">
+                                <p> <input type="checkbox" id="offline" /> <label for="offline">Work Offline</label> </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action" style="height: 90px;
+    padding-top: 0;
+    padding-bottom: 0;
+    border: 0;">
+                        <div class="row">
+                            <div class="s12 m4 l4 col-12 col-lg-12" style="margin: 0 0 4px;
+    width: 240px;">
+                                <button class="btn waves-effect waves-light" style="width: 240px;" type="button">Login</button>
+                            </div>
+                            <div class="s12 m4 l4 col-12 col-lg-12">
+                                <button class="waves-effect waves-light btn" type="submit" value="Submit">New User</button>
+                                <button class="waves-effect waves-light btn" type="button">Forget Password</button>
+                            </div>
+                        </div>
+                        <div class="row" style="margin: 4px;">
+                            <div class="col s12 m12 l12">
+</div>
+                        </div>
+                        <div class="row" style="padding: 4px;">
+                            <div class="col s12 m12 l12">
+</div>
+                        </div>
+                    </div>
+                </div>
+    </form>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

@@ -3,12 +3,12 @@ from flask import render_template
 from . import home
 
 
-@home.route('/')
+@home.route('/index')
 def homepage():
     """
     Render the homepage template on the / route
     """
-    return render_template('blockly.html', title="Welcome")
+    return render_template('page/home/index.html')
 
 
 @home.route('/dashboard')

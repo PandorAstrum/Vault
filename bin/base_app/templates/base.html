@@ -7,7 +7,7 @@
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='lib/css/materialize.min.css') }}" />
         <!--Import Bootsrap-->
-{#        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='lib/css/bootstrap.min.css') }}" />#}
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='lib/css/bootstrap.min.css') }}" />
         <!-- Import Fontawesome -->
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='lib/css/font-awesome.min.css') }}">
         <!--Import custom ui rules -->
@@ -22,22 +22,32 @@
         <div class="content">
             <!-- title bar -->
             {% include '_includes/titlebar.html' %}
-            {% block body %} {% endblock %}
+            <!-- inner content -->
+            <section class="main">
+                {% block body %} {% endblock %}
+            </section>
         </div>
 
         <!-- plugins -->
+        <!-- uncheck when building exe or runnign from npm -->
         <!-- import jquery -->
+        <!-- <script>require('jquery')</script> -->
+        <!-- import materialize -->
+        <!-- <script>require('materialize-js')</script> -->
+        <!-- import bootstrap -->
+        <!-- <script>require('bootstrap')</script> -->
+        <!-- import title bar behaviour -->
+        <!-- <script src="{{ url_for('static', filename='browserjs/titlebar.js') }}"></script> -->
+
+
+        <!-- use this settings during development -->
         <script src="{{ url_for('static', filename='lib/js/jquery-3.3.1.min.js') }}"></script>
         <!-- import materialize -->
         <script src="{{ url_for('static', filename='lib/js/materialize.min.js') }}"></script>
         <!-- import bootstrap -->
         <script src="{{ url_for('static', filename='lib/js/bootstrap.min.js') }}"></script>
-        <!-- import blockly -->
-        <script src="{{ url_for('static', filename='lib/js/blockly_compressed.js')}}"></script>
-        <script src="{{ url_for('static', filename='lib/js/blocks_compressed.js') }}"></script>
-        <script src="{{ url_for('static', filename='lib/js/en.js') }}"></script>
-        <!-- import titlebar behaviour -->
-        <script src="{{ url_for('static', filename='browserjs/titlebar.js')}}"></script>
+
+
 
         {% block js %} {% endblock %}
 

@@ -6,6 +6,8 @@ vnv
 test
 __pycache__
 .idea
+_pgbackup
+bin/py_dist
 
 #files
 *.tgz
